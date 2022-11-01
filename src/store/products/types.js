@@ -1,3 +1,4 @@
-export const SAVE_DATA = 'SAVE_DATA';
-export const GET_DATA = 'GET_DATA';
-export const DELETE_DATA = 'DELETE_DATA';
+export const SHOW_PRODUCTS = "SHOW_PRODUCTS";
+export const SET_PRODUCTS = "SET_PRODUCTS";
+export const SET_LOADING = "SET_LOADING";
+export const DISMISS_LOADING = "DISMISS_LOADING";

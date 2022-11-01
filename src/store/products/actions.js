@@ -1,21 +1,24 @@
-import { SAVE_DATA, GET_DATA, DELETE_DATA } from './types';
+import {
+  SET_LOADING,
+  DISMISS_LOADING,
+  SET_PRODUCTS,
+} from "./types";
 
-export const saveData = (data) => {
+export const setProducts = (products) => {
   return {
-    type: SAVE_DATA,
-    payload: data
+    type: SET_PRODUCTS,
+    payload: {
+      products: products,
+    },
   };
 };
 
-export const getData = () => {
-    return {
-        type: GET_DATA,
-    };
-}
+export const setProductsLoading = () => ({
+  type: SET_LOADING,
+  payload: { isLoadingProducts: true },
+});
 
-export const deleteData = (id) => {
-    return {
-        type: DELETE_DATA,
-        payload: id
-    };
-}
+export const dismissProductsLoading = () => ({
+  type: DISMISS_LOADING,
+  payload: { isLoadingProducts: false },
+});

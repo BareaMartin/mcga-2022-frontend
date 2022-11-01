@@ -1,32 +1,36 @@
-import { SAVE_DATA, GET_DATA, DELETE_DATA } from './types';
+import {
+  SET_LOADING,
+  DISMISS_LOADING,
+  SET_PRODUCTS,
+} from "./types";
 
- const INITIAL_STATE = {
-   data: []
- };
+const INITIAL_STATE = {
+  isLoadingProducts: false,
+  products: [],
+};
 
- const productsReducer = (state = INITIAL_STATE, action) => {
-   switch (action.type) {
-     case SAVE_DATA:
-       return {
+const reducer = (state = INITIAL_STATE, action) => {
+  switch (action.type) {
+    case SET_PRODUCTS:
+        return {
+          ...state,
+          products: [...action.payload.products],
+          isLoadingProducts: false,
+        };
+    case SET_LOADING:
+      return {
         ...state,
-        data: action.payload
-       };
+        isLoadingProducts: true,
+      };
+    case DISMISS_LOADING:
+      return state;
+      // return {
+      //   ...state,
+      //   isLoadingProducts: false,
+      // };
+    default:
+      return state;
+  }
+};
 
-        case GET_DATA:
-            return {
-                ...state,
-                data: [...state.data]
-            }
-
-        case DELETE_DATA:
-            return {
-                ...state,
-                data: state.data.filter(item => item.id !== action.payload)
-            }
-
-     default:
-       return state;
-   }
- };
-
- export default productsReducer;
+export default reducer;
